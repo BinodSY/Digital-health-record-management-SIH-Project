@@ -1,6 +1,7 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
+import enTranslations from '../locales/en.json'
 
 export type GovtLanguage = 'en' | 'ml' | 'hi'
 
@@ -21,7 +22,7 @@ const simpleTranslation = (language: GovtLanguage, key: string): string => {
 
 export function GovtLanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<GovtLanguage>('en')
-  const [translations, setTranslations] = useState<Record<string, string>>({})
+  const [translations, setTranslations] = useState<Record<string, string>>(enTranslations)
 
   // Load translations when language changes
   useEffect(() => {
