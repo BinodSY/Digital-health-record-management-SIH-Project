@@ -1,8 +1,19 @@
 "use client"
 import { useState } from "react"
 
+interface District {
+  id: number;
+  district: string;
+  icon: string;
+  workers: string;
+  liveRisk: string;
+  predictedRisk: string;
+  highRisk: string;
+  color: string;
+}
+
 export default function Dashboard() {
-  const [selectedDistrict, setSelectedDistrict] = useState(null)
+  const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null)
   const districts = [
     {
       id: 1,
