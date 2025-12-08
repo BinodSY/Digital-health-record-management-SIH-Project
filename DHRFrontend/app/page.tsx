@@ -51,6 +51,7 @@ export default function HealthPortal() {
   const handleLogin = () => {
     if (activeUserType === "worker") {
       // For worker login, check against registered users
+      router.push("/dashboard/worker")
       const workerAuth = (document.querySelector('input[name="workerAuth"]') as HTMLInputElement)?.value
       const workerPassword = (document.querySelector('input[name="workerPassword"]') as HTMLInputElement)?.value
       if (!workerAuth) {
