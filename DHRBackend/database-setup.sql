@@ -28,31 +28,27 @@ CREATE TABLE IF NOT EXISTS doctors (
 );
 
 -- Patients Table
-CREATE TABLE IF NOT EXISTS patients (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    health_id TEXT UNIQUE NOT NULL,
-    aadhaar TEXT,
-    name TEXT NOT NULL,
-    age INTEGER,
-    gender TEXT,
-    date_of_birth DATE,
-    phone TEXT,
-    email TEXT,
-    origin_state TEXT,
-    origin_city TEXT,
-    current_state TEXT,
-    current_city TEXT,
-    current_address TEXT,
-    workplace TEXT,
-    avatar_url TEXT,
-    blood_group TEXT,
-    emergency_contact_name TEXT,
-    emergency_contact_phone TEXT,
-    is_verified BOOLEAN DEFAULT true,
-    verification_date TIMESTAMP,
-    created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW()
+CREATE TABLE registration (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    
+    full_name VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(15) NOT NULL UNIQUE,
+    aadhaar_number CHAR(12) NOT NULL UNIQUE,
+    
+    date_of_birth DATE NOT NULL,
+    
+    current_address TEXT NOT NULL,
+    original_address TEXT,
+    
+    gender ENUM('Male', 'Female', 'Other', 'Prefer not to say') NOT NULL,
+    
+    workplace VARCHAR(150),
+    
+    emergency_contact_number VARCHAR(15) NOT NULL,
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- Medical Records Table
 CREATE TABLE IF NOT EXISTS medical_records (
