@@ -62,13 +62,16 @@ export default function HealthPortal() {
   const verifyOtp = async () => {
     try {
       console.log("Verifying OTP for", workAuthValue, otp);
+      
          const response = await api.auth.verifyOtp(workAuthValue, otp);
       console.log("OTP verified successfully", response);
       if(response.success){
+        alert("loggin successfull");
         router.push("/dashboard/worker")
       }
       // Handle success - show toast notification, etc. or error if not successful
     } catch (error) {
+      alert("invalid creadintial")
       console.error("Failed to send OTP", error);
       console.error("OTP error:", (error as any)?.response?.data || (error as any).message);
 
@@ -108,7 +111,7 @@ export default function HealthPortal() {
   }, [])
 
 
-  const handleLogin = async () => {
+    const handleLogin = async () => {
     try {
       if (activeUserType === "doctor") {
         const response = await api.auth.doctorLogin(doctorId, doctorPassword)
@@ -119,7 +122,12 @@ export default function HealthPortal() {
         
       } else if (activeUserType === "govt") {
         // TODO: Implement government login logic
-        router.push("/dashboard/govt")
+        // const response = await api.auth.governmentLogin()
+        // if(response.success){
+        //   alert("Login successful")
+        // router.push("/dashboard/govt")
+        // }
+         router.push("/dashboard/govt")
       }
     } catch (error) {
       alert("Login failed. Please check your credentials and try again.")

@@ -312,6 +312,14 @@ export const authenication={
         });
         return handleResponse(response);
     },
+     governmentLogin: async(email, password_hash) => {
+        const response = await fetch(`${API_BASE_URL}/auth/governmentLogin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password_hash })
+        });
+        return handleResponse(response);
+    },
 }
 
 // Export all APIs
